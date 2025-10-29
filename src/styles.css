@@ -50,7 +50,6 @@ h1 {
 
 .editor-container {
   margin: 0;
-  border-radius: 2px;
   width: 100%;
   color: #000;
   position: relative;
@@ -62,9 +61,13 @@ h1 {
 }
 
 .editor-inner {
-  background: none;
+  background: #fff;
   position: relative;
   height: calc(100dvh - 46px);
+}
+
+.dark .editor-inner {
+  background: #121212;
 }
 
 .editor-input {
@@ -323,12 +326,13 @@ pre::-webkit-scrollbar-thumb {
 
 .toolbar {
   display: flex;
-  margin-bottom: 1px;
-  background: none;
+  background: #f9f9f9;
   padding: 4px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
   vertical-align: middle;
+}
+
+.dark .toolbar {
+  background: #232329;
 }
 
 .toolbar button.toolbar-item {
@@ -380,6 +384,10 @@ pre::-webkit-scrollbar-thumb {
   width: 1px;
   background-color: #eee;
   margin: 0 4px;
+}
+
+.dark .toolbar .divider {
+  background-color: #121212;
 }
 
 .toolbar .toolbar-item .text {

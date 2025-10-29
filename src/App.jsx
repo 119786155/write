@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-
+import { useState } from "react";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
@@ -121,9 +121,18 @@ const editorConfig = {
 };
 
 export default function App() {
+  const themeDarkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const [theme, setTheme] = useState(themeDarkQuery.matches ? "dark" : "light");
+
+  themeDarkQuery.addEventListener("change", (mediaQueryListEvent) => {
+    setTheme(mediaQueryListEvent.matches ? "dark" : "light");
+  });
+
+  const getClassList = () => ["editor-container", theme].join(" ");
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
+      <div className={getClassList()}>
         <ToolbarPlugin />
         <div className="editor-inner">
           <RichTextPlugin
